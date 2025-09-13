@@ -53,6 +53,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
   const { dispatch } = useCart()
 
   const handleAddToCart = () => {
+    console.log("[v0] Add to cart clicked for:", product.name, "Size:", selectedSize, "Quantity:", quantity)
     if (!selectedSize && product.sizes.length > 1) {
       alert("Please select a size")
       return
@@ -76,6 +77,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
   }
 
   const handleBuyNow = () => {
+    console.log("[v0] Buy now clicked for:", product.name)
     if (!selectedSize && product.sizes.length > 1) {
       alert("Please select a size")
       return
@@ -99,10 +101,12 @@ export function ProductDetail({ product }: ProductDetailProps) {
   }
 
   const nextImage = () => {
+    console.log("[v0] Next image clicked, current:", selectedImage)
     setSelectedImage((prev) => (prev + 1) % product.images.length)
   }
 
   const prevImage = () => {
+    console.log("[v0] Previous image clicked, current:", selectedImage)
     setSelectedImage((prev) => (prev - 1 + product.images.length) % product.images.length)
   }
 
@@ -203,7 +207,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
               {product.colors.map((color) => (
                 <button
                   key={color}
-                  onClick={() => setSelectedColor(color)}
+                  onClick={() => {
+                    console.log("[v0] Color selected:", color)
+                    setSelectedColor(color)
+                  }}
                   className={`w-8 h-8 rounded-full border-2 ${
                     selectedColor === color ? "border-primary" : "border-gray-300"
                   }`}
@@ -221,7 +228,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 {product.sizes.map((size) => (
                   <button
                     key={size}
-                    onClick={() => setSelectedSize(size)}
+                    onClick={() => {
+                      console.log("[v0] Size selected:", size)
+                      setSelectedSize(size)
+                    }}
                     className={`px-3 py-2 text-sm border rounded-md ${
                       selectedSize === size
                         ? "border-primary bg-primary text-primary-foreground"
@@ -242,7 +252,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
               <Button
                 variant="outline"
                 size="icon"
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                onClick={() => {
+                  console.log("[v0] Quantity decrease clicked, current:", quantity)
+                  setQuantity(Math.max(1, quantity - 1))
+                }}
                 disabled={quantity <= 1}
                 className="h-8 w-8"
               >
@@ -252,7 +265,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
               <Button
                 variant="outline"
                 size="icon"
-                onClick={() => setQuantity(Math.min(product.stockCount, quantity + 1))}
+                onClick={() => {
+                  console.log("[v0] Quantity increase clicked, current:", quantity)
+                  setQuantity(Math.min(product.stockCount, quantity + 1))
+                }}
                 disabled={quantity >= product.stockCount}
                 className="h-8 w-8"
               >
@@ -272,7 +288,15 @@ export function ProductDetail({ product }: ProductDetailProps) {
               <span className="hidden sm:inline">Buy Now</span>
               <span className="sm:hidden">Buy</span>
             </Button>
-            <Button variant="outline" size="icon" onClick={() => setIsWishlisted(!isWishlisted)} className="w-12">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => {
+                console.log("[v0] Wishlist toggle clicked, current state:", isWishlisted)
+                setIsWishlisted(!isWishlisted)
+              }}
+              className="w-12"
+            >
               <Heart className={`h-4 w-4 ${isWishlisted ? "fill-red-500 text-red-500" : ""}`} />
             </Button>
             <Button variant="outline" size="icon" className="w-12 bg-transparent">

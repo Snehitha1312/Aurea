@@ -41,9 +41,10 @@ export function ProductCard({ product }: ProductCardProps) {
               variant="ghost"
               className="absolute top-3 right-3 bg-white/80 hover:bg-white"
               onClick={(e) => {
+                console.log("[v0] Wishlist button clicked for:", product.name)
                 e.preventDefault()
                 e.stopPropagation()
-                console.log("Added to wishlist:", product.name)
+                alert(`Added ${product.name} to wishlist!`)
               }}
             >
               <Heart className="h-4 w-4" />

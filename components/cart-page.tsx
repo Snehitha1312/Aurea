@@ -13,14 +13,17 @@ export function CartPage() {
   const { state, dispatch } = useCart()
 
   const updateQuantity = (id: number, quantity: number) => {
+    console.log("[v0] Cart quantity update:", id, quantity)
     dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } })
   }
 
   const removeItem = (index: number) => {
+    console.log("[v0] Cart item remove:", index)
     dispatch({ type: "REMOVE_ITEM", payload: index })
   }
 
   const clearCart = () => {
+    console.log("[v0] Clear cart clicked")
     dispatch({ type: "CLEAR_CART" })
   }
 
@@ -77,7 +80,10 @@ export function CartPage() {
                         <Button
                           variant="ghost"
                           size="icon"
-                          onClick={() => removeItem(index)}
+                          onClick={() => {
+                            console.log("[v0] Remove item clicked for index:", index)
+                            removeItem(index)
+                          }}
                           className="text-red-500 hover:text-red-700 h-8 w-8 md:h-10 md:w-10 flex-shrink-0"
                         >
                           <Trash2 className="h-3 w-3 md:h-4 md:w-4" />
@@ -105,7 +111,10 @@ export function CartPage() {
                           <Button
                             variant="outline"
                             size="icon"
-                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            onClick={() => {
+                              console.log("[v0] Cart quantity decrease clicked for item:", item.id)
+                              updateQuantity(item.id, item.quantity - 1)
+                            }}
                             disabled={item.quantity <= 1}
                             className="h-6 w-6 md:h-8 md:w-8"
                           >
@@ -117,7 +126,10 @@ export function CartPage() {
                           <Button
                             variant="outline"
                             size="icon"
-                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            onClick={() => {
+                              console.log("[v0] Cart quantity increase clicked for item:", item.id)
+                              updateQuantity(item.id, item.quantity + 1)
+                            }}
                             className="h-6 w-6 md:h-8 md:w-8"
                           >
                             <Plus className="h-2 w-2 md:h-3 md:w-3" />

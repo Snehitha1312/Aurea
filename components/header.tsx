@@ -29,6 +29,7 @@ export function Header() {
   const router = useRouter()
 
   const handleSearch = (e: React.FormEvent) => {
+    console.log("[v0] Search form submitted with query:", searchQuery)
     e.preventDefault()
     if (searchQuery.trim()) {
       router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`)
@@ -39,6 +40,7 @@ export function Header() {
   }
 
   const handleLogout = () => {
+    console.log("[v0] Logout button clicked")
     logout()
     router.push("/")
   }
@@ -253,7 +255,10 @@ export function Header() {
               variant="ghost"
               size="icon"
               className="lg:hidden"
-              onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
+              onClick={() => {
+                console.log("[v0] Mobile search button clicked, current state:", mobileSearchOpen)
+                setMobileSearchOpen(!mobileSearchOpen)
+              }}
             >
               <Search className="h-5 w-5" />
             </Button>
@@ -347,7 +352,10 @@ export function Header() {
                 variant="ghost"
                 size="icon"
                 className="absolute right-2 top-1/2 -translate-y-1/2"
-                onClick={() => setMobileSearchOpen(false)}
+                onClick={() => {
+                  console.log("[v0] Mobile search close button clicked")
+                  setMobileSearchOpen(false)
+                }}
               >
                 <X className="h-4 w-4" />
               </Button>
