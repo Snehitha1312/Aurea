@@ -13,7 +13,7 @@ const products = [
     discount: 35,
     rating: 4.2,
     reviews: 156,
-    image: "/placeholder-fjmic.png",
+    image: "/classic-cotton-shirt.jpg",
     colors: ["white", "blue", "black"],
   },
   {
@@ -37,7 +37,7 @@ const products = [
     discount: 28,
     rating: 4.1,
     reviews: 234,
-    image: "/placeholder-bsrno.png",
+    image: "/denim-casual-jeans.jpg",
     colors: ["blue", "black", "gray"],
   },
   {
@@ -49,7 +49,7 @@ const products = [
     discount: 30,
     rating: 4.7,
     reviews: 67,
-    image: "/placeholder-47olq.png",
+    image: "/leather-handbag-luxury.jpg",
     colors: ["brown", "black", "tan"],
   },
   {
@@ -73,7 +73,7 @@ const products = [
     discount: 31,
     rating: 4.4,
     reviews: 45,
-    image: "/placeholder-0swvi.png",
+    image: "/silk-scarf-elegant.jpg",
     colors: ["multicolor", "blue", "red"],
   },
 ]
@@ -104,7 +104,14 @@ export function ProductGrid() {
                       <Heart className="h-4 w-4" />
                     </Button>
                     {product.discount > 0 && (
-                      <div className="absolute top-3 left-3 bg-secondary text-secondary-foreground px-2 py-1 rounded text-sm font-medium">
+                      <div
+                        className="absolute top-3 left-3 px-2 py-1 rounded text-sm font-bold shadow-lg"
+                        style={{
+                          backgroundColor: "#D50032",
+                          color: "#FFFFFF",
+                          border: "1px solid #B8002E",
+                        }}
+                      >
                         {product.discount}% OFF
                       </div>
                     )}

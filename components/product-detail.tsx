@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import {
   Heart,
@@ -193,9 +192,16 @@ export function ProductDetail({ product }: ProductDetailProps) {
             {product.originalPrice > product.price && (
               <>
                 <span className="text-lg text-muted-foreground line-through">₹{product.originalPrice}</span>
-                <Badge variant="secondary" className="bg-green-100 text-green-800">
+                <div
+                  className="px-2 py-1 rounded text-sm font-bold shadow-lg"
+                  style={{
+                    backgroundColor: "#D50032",
+                    color: "#FFFFFF",
+                    border: "1px solid #B8002E",
+                  }}
+                >
                   {product.discount}% OFF
-                </Badge>
+                </div>
               </>
             )}
           </div>

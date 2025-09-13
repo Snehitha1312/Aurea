@@ -50,7 +50,14 @@ export function ProductCard({ product }: ProductCardProps) {
               <Heart className="h-4 w-4" />
             </Button>
             {product.discount > 0 && (
-              <div className="absolute top-3 left-3 bg-secondary text-secondary-foreground px-2 py-1 rounded text-sm font-medium">
+              <div
+                className="absolute top-3 left-3 px-2 py-1 rounded text-sm font-bold shadow-lg"
+                style={{
+                  backgroundColor: "#D50032",
+                  color: "#FFFFFF",
+                  border: "1px solid #B8002E",
+                }}
+              >
                 {product.discount}% OFF
               </div>
             )}
