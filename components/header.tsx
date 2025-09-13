@@ -149,7 +149,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-4">
-            <Link href="/">
+            <Link href="/" onClick={() => console.log("[v0] Home logo clicked - navigating to homepage")}>
               <h1 className="text-xl md:text-2xl font-bold text-primary cursor-pointer">StyleHub</h1>
             </Link>
           </div>
